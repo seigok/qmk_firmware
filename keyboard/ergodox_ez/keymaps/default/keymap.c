@@ -230,10 +230,10 @@ void matrix_scan_user(void) {
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
         case OSX:
-            //ergodox_right_led_1_on();
+            ergodox_right_led_1_on();
             break;
         case WINDOWS:
-            //ergodox_right_led_2_on();
+            ergodox_right_led_2_on();
             break;
         case FN:
             ergodox_right_led_3_on();
