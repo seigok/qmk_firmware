@@ -58,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Windows layer (JIS layout)
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | `~   |           | PSCR |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |   =    |   1  |   2  |   3  |   4  |   5  | カナ |           | PSCR |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  |   E  |   R  |   T  | Tab  |           | LFn  |   Y  |   U  |   I  |   O  |   P  |   {[   |
+ * | Tab    |   Q  |   W  |   E  |   R  |   T  | LFn  |           | LFn  |   Y  |   U  |   I  |   O  |   P  |   {[   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | CTRL   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   :*   |
  * |--------+------+------+------+------+------| LGui |           |LMouse|------+------+------+------+------+--------|
@@ -72,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        | LGui | LAlt |       | Alt  | Esc  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Home |       | PgUp |        |      |
- *                                 |Backsp|カナ  |------|       |------| Enter  |Space |
- *                                 |ace   |      | End  |       | PgDn |        |      |
+ *                                 |Space |カナ  |------|       |------| Enter  |Space |
+ *                                 |      |      | End  |       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -81,13 +81,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [WINDOWS] = KEYMAP(  // layer 0 : default
         // left hand
         KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_GRV,
-        KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_TAB,
+        KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   MO(FN),
         KC_LCTL,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        KC_Z,         KC_X,   KC_C,   KC_V,   KC_B,   KC_LGUI,
         LCTL(KC_X),     LCTL(KC_V),   LCTL(KC_C),   KC_LEFT,  KC_RGHT,
-                                               KC_LGUI,       KC_LALT,
-                                                              KC_HOME,
-                                               KC_BSPC,KC_KANA,KC_END,
+                                                KC_LGUI,        KC_LALT,
+                                                                KC_HOME,
+                                                KC_SPC ,KC_GRV, KC_END,
         // right hand
              KC_PSCR,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_MINS,
              MO(FN),      KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_LBRC,
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  | F6   |           | F7   |  F8  |  F9  | F10  |  F11 |  F12 |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * | CAPS   |      |      |      |      |      |      |           |      |      |      |      |      |      | NUMLCK |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [FN] = KEYMAP(
        // left hand
        KC_TRNS,       KC_F1,      KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
-       KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_CAPS,     KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS,
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      KC_SPC, KC_ENT, KC_TRNS,
        // right hand
        KC_F7,     KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_NLCK,
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
@@ -233,7 +233,7 @@ void matrix_scan_user(void) {
             ergodox_right_led_1_on();
             break;
         case WINDOWS:
-            ergodox_right_led_2_on();
+            //ergodox_right_led_2_on();
             break;
         case FN:
             ergodox_right_led_3_on();
